@@ -27,12 +27,26 @@ window.HM_INTENTS = [
   { title: "Quero investir", sub: "Lançamentos e oportunidades", icon: "chart", msg: "Olá, Saulo! Tenho interesse em investir em imóveis." }
 ];
 
-// Empreendimentos que o Saulo trabalha.
-// Para cada um: nome, tipo/bairro, link (Instagram, site ou material) e imagem opcional em /assets/img/.
+// Catálogo de empreendimentos. Cada um vira um cartão com fotos deslizando e tela cheia.
+// Fotos: coloque em assets/img/empreendimentos/<nome>/ (01.jpg, 02.jpg…) e liste em "photos".
+// Todos os campos são opcionais, menos "name"; o que ficar vazio não aparece.
 // Lista vazia = a seção não aparece.
 window.HM_PROJECTS = [
-  { name: "Urban Garden Residence", place: "Peça o caderno de plantas pelo WhatsApp", link: "", image: "", msg: "Olá, Saulo! Quero saber mais sobre o Urban Garden Residence e receber o caderno de plantas." }
-  // , { name: "Nome do empreendimento", place: "Apartamentos · Setor Bueno, Goiânia", link: "https://…", image: "/assets/img/empreendimento-1.jpg", msg: "Olá, Saulo! Quero saber mais sobre o Nome do empreendimento." }
+  {
+    name: "Urban Garden Residence",
+    status: "",                // ex.: "Lançamento", "Em obras", "Pronto para morar"
+    place: "",                 // ex.: "Setor Bueno · Goiânia"
+    bedrooms: "",              // ex.: "2 e 3"
+    area: "",                  // ex.: "68 a 92"
+    parking: "",               // ex.: "1 ou 2"
+    price: "",                 // ex.: "R$ 450 mil"
+    description: "Peça o caderno de plantas completo pelo WhatsApp.",
+    features: [],              // ex.: ["Piscina", "Academia", "Espaço gourmet"]
+    photos: [],                // ex.: ["/assets/img/empreendimentos/urban-garden/01.jpg", "/assets/img/empreendimentos/urban-garden/02.jpg"]
+    link: "",                  // site, Instagram ou material do empreendimento (opcional)
+    msg: "Olá, Saulo! Quero saber mais sobre o Urban Garden Residence e receber o caderno de plantas."
+  }
+  // , { name: "Outro empreendimento", status: "Lançamento", place: "Bairro · Cidade", photos: [ ... ] }
 ];
 
 // Crédito de quem fez o cartão

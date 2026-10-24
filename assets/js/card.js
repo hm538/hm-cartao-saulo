@@ -42,12 +42,41 @@
     `<button type="button" data-share>${icon("share")}Compartilhar</button>`
   ].join("");
 
-  const projectCard = e => `
-    <a class="proj-card" href="${esc(e.link || wa(e.msg || `Olá, ${first}! Quero saber mais sobre o ${e.name}.`))}" target="_blank" rel="noopener">
-      ${e.image ? `<img src="${esc(e.image)}" alt="${esc(e.name)}" loading="lazy">` : `<span class="proj-ic">${icon("building")}</span>`}
-      <span class="proj-tx"><strong>${esc(e.name)}</strong><small>${esc(e.place || "")}</small></span>
-      ${icon("arrow", "i arrow")}
-    </a>`;
+  // ---------- catálogo de empreendimentos ----------
+  const specs = e => [
+    e.bedrooms && `${e.bedrooms} quarto${String(e.bedrooms).match(/^1$/) ? "" : "s"}`,
+    e.area && `${e.area} m²`,
+    e.parking && `${e.parking} vaga${String(e.parking).match(/^1$/) ? "" : "s"}`
+  ].filter(Boolean);
+  const projectCard = (e, i) => {
+    const photos = e.photos || [];
+    const msg = e.msg || `Olá, ${first}! Quero saber mais sobre o ${e.name}.`;
+    return `
+    <article class="cat-item">
+      <div class="cat-media">
+        ${photos.length ? `
+          <div class="cat-track" data-track="${i}">
+            ${photos.map((src, j) => `<button class="cat-photo" type="button" data-open="${i}|${j}" aria-label="Ampliar foto ${j + 1} de ${photos.length}"><img src="${esc(src)}" alt="${esc(e.name)}, foto ${j + 1}" loading="lazy"></button>`).join("")}
+          </div>
+          ${photos.length > 1 ? `<span class="cat-count" data-count="${i}">1/${photos.length}</span>` : ""}
+          ${photos.length > 1 ? `<div class="cat-dots" data-dots="${i}">${photos.map((_, j) => `<i class="${j ? "" : "on"}"></i>`).join("")}</div>` : ""}`
+        : `<div class="cat-empty">${mark("mark cat-mark")}<span>Fotos em breve</span></div>`}
+        ${e.status ? `<span class="cat-status">${esc(e.status)}</span>` : ""}
+      </div>
+      <div class="cat-body">
+        <h3>${esc(e.name)}</h3>
+        ${e.place ? `<p class="cat-place">${esc(e.place)}</p>` : ""}
+        ${specs(e).length ? `<div class="cat-specs">${specs(e).map(t => `<span>${esc(t)}</span>`).join("")}</div>` : ""}
+        ${e.description ? `<p class="cat-desc">${esc(e.description)}</p>` : ""}
+        ${(e.features || []).length ? `<ul class="cat-feat">${e.features.map(f => `<li>${esc(f)}</li>`).join("")}</ul>` : ""}
+        ${e.price ? `<p class="cat-price"><small>A partir de</small><b>${esc(e.price)}</b></p>` : ""}
+        <div class="cat-actions">
+          <a class="btn-cat primary" href="${esc(wa(msg))}" target="_blank" rel="noopener">${icon("whatsapp")}Quero saber mais</a>
+          ${e.link ? `<a class="btn-cat" href="${esc(e.link)}" target="_blank" rel="noopener">${icon("arrow")}Ver material</a>` : ""}
+        </div>
+      </div>
+    </article>`;
+  };
 
   const html = `
     <header class="top rise">
@@ -86,9 +115,9 @@
     <section aria-labelledby="s-proj">
       <div class="sec-head">
         <span class="eyebrow">Empreendimentos</span>
-        <h2 id="s-proj">Onde eu atendo <span>agora.</span></h2>
+        <h2 id="s-proj">Imóveis que eu <span>apresento.</span></h2>
       </div>
-      <div class="proj-list">${projects.map(projectCard).join("")}</div>
+      <div class="cat">${projects.map(projectCard).join("")}</div>
     </section>` : ""}
 
     <div class="qr">
@@ -151,6 +180,44 @@
     setTimeout(() => URL.revokeObjectURL(url), 1000);
     toast("Contato baixado. Abra o arquivo para salvar.");
   }));
+
+  // Carrossel: contador e bolinhas acompanham a foto visível
+  document.querySelectorAll("[data-track]").forEach(track => {
+    const i = track.dataset.track;
+    const count = document.querySelector(`[data-count="${i}"]`), dots = document.querySelectorAll(`[data-dots="${i}"] i`);
+    track.addEventListener("scroll", () => {
+      const j = Math.round(track.scrollLeft / track.clientWidth);
+      if (count) count.textContent = `${j + 1}/${track.children.length}`;
+      dots.forEach((d, k) => d.classList.toggle("on", k === j));
+    }, { passive: true });
+  });
+
+  // Tela cheia das fotos
+  const box = document.createElement("div");
+  box.className = "lightbox"; box.hidden = true;
+  box.setAttribute("role", "dialog"); box.setAttribute("aria-modal", "true");
+  document.body.appendChild(box);
+  function openBox(i, j) {
+    const e = projects[i], photos = e.photos;
+    box.innerHTML = `
+      <div class="lb-top"><b>${esc(e.name)}</b><span class="lb-count">${j + 1}/${photos.length}</span><button type="button" class="lb-close" aria-label="Fechar">✕</button></div>
+      <div class="lb-track">${photos.map((src, k) => `<figure><img src="${esc(src)}" alt="${esc(e.name)}, foto ${k + 1}"></figure>`).join("")}</div>
+      ${photos.length > 1 ? `<button type="button" class="lb-nav prev" aria-label="Foto anterior">‹</button><button type="button" class="lb-nav next" aria-label="Próxima foto">›</button>` : ""}
+      <a class="btn-cat primary lb-cta" href="${esc(wa(e.msg || `Olá, ${first}! Quero saber mais sobre o ${e.name}.`))}" target="_blank" rel="noopener">${icon("whatsapp")}Quero saber mais</a>`;
+    box.hidden = false;
+    document.documentElement.classList.add("intro-lock");
+    const track = box.querySelector(".lb-track"), cnt = box.querySelector(".lb-count");
+    requestAnimationFrame(() => { track.scrollLeft = j * track.clientWidth });
+    const go = d => track.scrollTo({ left: (Math.round(track.scrollLeft / track.clientWidth) + d) * track.clientWidth, behavior: "smooth" });
+    track.addEventListener("scroll", () => { cnt.textContent = `${Math.round(track.scrollLeft / track.clientWidth) + 1}/${photos.length}` }, { passive: true });
+    box.querySelector(".prev")?.addEventListener("click", () => go(-1));
+    box.querySelector(".next")?.addEventListener("click", () => go(1));
+    box.querySelector(".lb-close").addEventListener("click", closeBox);
+    box.onkeydown = ev => { if (ev.key === "Escape") closeBox(); if (ev.key === "ArrowRight") go(1); if (ev.key === "ArrowLeft") go(-1) };
+    box.tabIndex = -1; box.focus();
+  }
+  function closeBox() { box.hidden = true; box.innerHTML = ""; document.documentElement.classList.remove("intro-lock") }
+  document.querySelectorAll("[data-open]").forEach(b => b.addEventListener("click", () => { const [i, j] = b.dataset.open.split("|").map(Number); openBox(i, j) }));
 
   const qr = document.getElementById("qr");
   if (qr && window.qrcode) {

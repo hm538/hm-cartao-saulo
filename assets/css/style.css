@@ -247,3 +247,49 @@ h2 { font-size: clamp(25px, 7vw, 30px); letter-spacing: 0 }
 .credit:hover { color: var(--ice) }
 .sk-intro { background: radial-gradient(110% 80% at 50% 40%, #1f6b4f 0%, #061a13 72%) }
 .sk-stage { width: min(80vw, 420px) }
+
+/* ---------- catálogo de empreendimentos ---------- */
+[hidden] { display: none !important }
+.cat { display: grid; gap: 18px }
+.cat-item { border-radius: 22px; overflow: hidden; background: var(--panel); border: 1px solid var(--line) }
+.cat-media { position: relative; aspect-ratio: 4 / 3; max-width: 100%; background: var(--panel-2) }
+.cat-track { display: flex; height: 100%; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none }
+.cat-track::-webkit-scrollbar { display: none }
+.cat-photo { flex: 0 0 100%; height: 100%; padding: 0; border: 0; background: none; scroll-snap-align: start; cursor: zoom-in }
+.cat-photo img { width: 100%; height: 100%; object-fit: cover }
+.cat-count { position: absolute; top: 12px; right: 12px; padding: 4px 10px; border-radius: 99px; background: rgba(10,38,29,.72); color: var(--text); font: 500 11.5px var(--mono); backdrop-filter: blur(6px) }
+.cat-status { position: absolute; top: 12px; left: 12px; padding: 5px 11px; border-radius: 99px; background: var(--ice); color: var(--navy); font: 700 11px var(--body); letter-spacing: .04em; text-transform: uppercase }
+.cat-dots { position: absolute; bottom: 10px; left: 0; right: 0; display: flex; justify-content: center; gap: 6px; pointer-events: none }
+.cat-dots i { width: 6px; height: 6px; border-radius: 99px; background: rgba(245,243,236,.45); transition: width .2s, background .2s }
+.cat-dots i.on { width: 18px; background: var(--text) }
+.cat-empty { height: 100%; display: grid; place-items: center; align-content: center; gap: 12px; color: var(--muted); font: 500 11px var(--mono); letter-spacing: .24em; text-transform: uppercase;
+  background: radial-gradient(70% 70% at 50% 40%, rgba(31,107,79,.55), transparent 70%), var(--panel-2) }
+.cat-empty .cat-mark { height: 46px; width: auto; opacity: .8 }
+.cat-body { padding: 18px; display: grid; gap: 10px }
+.cat-body h3 { margin: 0; font: 600 25px/1.1 var(--display) }
+.cat-place { margin: 0; color: var(--electric); font-size: 13.5px; font-weight: 600 }
+.cat-specs { display: flex; flex-wrap: wrap; gap: 6px }
+.cat-specs span { padding: 5px 10px; border-radius: 99px; border: 1px solid var(--line); font-size: 12.5px; color: var(--text) }
+.cat-desc { margin: 0; color: var(--muted); font-size: 14px }
+.cat-feat { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px; font-size: 13px; color: var(--text) }
+.cat-feat li::before { content: "·"; color: var(--electric); font-weight: 700; margin-right: 6px }
+.cat-price { margin: 4px 0 0; display: grid }
+.cat-price small { color: var(--muted); font-size: 11.5px }
+.cat-price b { font: 600 24px var(--display) }
+.cat-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px }
+.btn-cat { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 12px; border: 1px solid var(--line); color: var(--text); font: 600 13.5px var(--body) }
+.btn-cat svg.i { width: 18px; height: 18px }
+.btn-cat.primary { background: var(--ice); color: var(--navy); border-color: transparent }
+.lightbox { position: fixed; inset: 0; z-index: 200; background: rgba(4,18,13,.96); display: grid; grid-template-rows: auto 1fr auto; padding: env(safe-area-inset-top, 0px) 0 calc(16px + env(safe-area-inset-bottom, 0px)) }
+.lb-top { display: flex; align-items: center; gap: 12px; padding: 14px max(16px, env(safe-area-inset-right, 0px)) 14px max(16px, env(safe-area-inset-left, 0px)); color: var(--text) }
+.lb-top b { flex: 1; min-width: 0; font: 600 20px var(--display); overflow: hidden; text-overflow: ellipsis; white-space: nowrap }
+.lb-count { font: 500 12px var(--mono); color: var(--muted) }
+.lb-close { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--text); font-size: 16px; cursor: pointer }
+.lb-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; min-height: 0 }
+.lb-track::-webkit-scrollbar { display: none }
+.lb-track figure { flex: 0 0 100%; margin: 0; display: grid; place-items: center; scroll-snap-align: center; padding: 0 8px }
+.lb-track img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px }
+.lb-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: rgba(10,38,29,.7); color: var(--text); font-size: 26px; line-height: 1; cursor: pointer }
+.lb-nav.prev { left: max(10px, env(safe-area-inset-left, 0px)) } .lb-nav.next { right: max(10px, env(safe-area-inset-right, 0px)) }
+.lb-cta { justify-self: center; margin-top: 12px }
+@media (max-width: 600px) { .lb-nav { display: none } }
