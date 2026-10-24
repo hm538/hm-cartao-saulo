@@ -23,4 +23,4 @@ python3 -m http.server 8000
 ## Publicar na Vercel
 
 Site estático, sem build: **Add New → Project → importar este repositório → Deploy** (Framework Preset: *Other*).
-Domínio sugerido: `saulo.hmdigitalgo.com` (já usado na prévia do link em `index.html`).
+Domínio sugerido: `saulocorretor.hmdigitalgo.com` (já usado na prévia do link em `index.html`).
