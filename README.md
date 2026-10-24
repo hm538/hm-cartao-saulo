@@ -2,8 +2,8 @@
 
 Cartão digital do Saulo Rocha, corretor de imóveis, feito pela HM Digital.
 
-Abertura: a casa é desenhada, a chave entra girando e destranca a porta, a porta abre com luz,
-a chave vai para o lado da casa (como na logo) e aparecem o "SR" e o CRECI.
+Abertura que monta a logo "Chave-casa": a casa é desenhada, a chave entra girando e destranca a porta, a porta abre com luz,
+e a chave se encaixa na lateral da casa (a casa vira a cabeça da chave). Depois aparecem o "SR", o nome e o CRECI.
 
 ## Editar os dados
 

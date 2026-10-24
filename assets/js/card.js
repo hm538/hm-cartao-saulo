@@ -23,15 +23,7 @@
   const ig = handle => `https://instagram.com/${handle}`;
   const mark = (cls = "mark") => window.SRMark ? window.SRMark(cls) : "";
 
-  const defs = `
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <linearGradient id="sk-gold-m" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stop-color="#f6e7c1"/><stop offset=".45" stop-color="#d4af64"/>
-        <stop offset=".7" stop-color="#a8823e"/><stop offset="1" stop-color="#e9cf91"/>
-      </linearGradient>
-    </defs>
-  </svg>`;
+  const defs = "";
 
   function link(href, ic, title, sub, primary) {
     return `<a class="link${primary ? " primary" : ""}" href="${esc(href)}" target="_blank" rel="noopener">
@@ -59,7 +51,7 @@
 
   const html = `
     <header class="top rise">
-      <span class="brand sr-brand">${mark()}<span>Saulo Rocha<small>Imóveis</small></span></span>
+      <span class="brand sr-brand">${mark()}<span>Saulo Rocha<small>CRECI ${esc(p.creci)}</small></span></span>
       <button class="icon-btn" type="button" data-share aria-label="Compartilhar cartão">${icon("share")}</button>
     </header>
 

@@ -1,18 +1,18 @@
 /* Cartão digital · Saulo Rocha, corretor de imóveis.
    Layout: uma coluna na largura de um celular, como um cartão que se rola.
-   Verde-petróleo escuro com dourado: sóbrio e de confiança, como chave e placa de bronze. */
+   Cores e letras da marca "Chave-casa": verde-escuro, verde, sálvia e creme, com serifa clássica. */
 :root {
-  --ink: #070d0b;
-  --panel: #0e1a17;
-  --panel-2: #13221e;
-  --line: rgba(222, 200, 160, .14);
-  --text: #f3eee4;
-  --muted: #9aa39c;
-  --electric: #c9a45c;
-  --ice: #ecdcb8;
-  --navy: #1c160a;
-  --chrome: linear-gradient(135deg, #5e4720 0%, #9c7a3c 28%, #f3e2b5 46%, #b08a45 58%, #6e5527 100%);
-  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --ink: #0a261d;
+  --panel: #0f3d2e;
+  --panel-2: #134634;
+  --line: rgba(200, 220, 205, .14);
+  --text: #f5f3ec;
+  --muted: #93a89a;
+  --electric: #8daa91;
+  --ice: #e4ece4;
+  --navy: #0f3d2e;
+  --chrome: linear-gradient(135deg, #0b2e23 0%, #1f6b4f 28%, #f5f3ec 46%, #6f9478 58%, #0f3d2e 100%);
+  --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --body: "Manrope", "Segoe UI", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
   --r: 22px;
@@ -32,8 +32,8 @@ body {
 body::before {
   content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
   background:
-    radial-gradient(60% 40% at 50% -5%, rgba(201,164,92,.22), transparent 70%),
-    radial-gradient(40% 30% at 100% 60%, rgba(150,110,45,.12), transparent 70%);
+    radial-gradient(60% 40% at 50% -5%, rgba(141,170,145,.22), transparent 70%),
+    radial-gradient(40% 30% at 100% 60%, rgba(31,107,79,.12), transparent 70%);
 }
 img { max-width: 100%; display: block }
 a { color: inherit; text-decoration: none }
@@ -51,7 +51,7 @@ button { font: inherit; color: inherit }
 
 /* ---------- logo ---------- */
 .mark { display: block; height: 30px; width: auto; object-fit: contain }
-img.mark { filter: drop-shadow(0 0 10px rgba(201, 164, 92, .35)) }
+img.mark { filter: drop-shadow(0 0 10px rgba(141, 170, 145, .35)) }
 .mark { fill: url(#chrome) }
 .brand { display: flex; align-items: center; gap: 10px }
 .brand span { font: 500 15px var(--body); letter-spacing: .02em; color: var(--ice) }
@@ -65,7 +65,7 @@ img.mark { filter: drop-shadow(0 0 10px rgba(201, 164, 92, .35)) }
   border: 1px solid var(--line); background: rgba(255,255,255,.03); color: var(--ice);
   cursor: pointer; transition: background .2s, border-color .2s;
 }
-.icon-btn:hover { background: rgba(201,164,92,.12); border-color: rgba(201,164,92,.5) }
+.icon-btn:hover { background: rgba(141,170,145,.12); border-color: rgba(141,170,145,.5) }
 svg.i { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none }
 
 /* ---------- profile card ---------- */
@@ -74,7 +74,7 @@ svg.i { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-widt
 .avatar {
   position: absolute; top: 0; z-index: 2;
   width: 132px; height: 132px; border-radius: 50%; padding: 4px;
-  background: var(--chrome); box-shadow: 0 18px 40px -12px rgba(150,110,45,.7);
+  background: var(--chrome); box-shadow: 0 18px 40px -12px rgba(31,107,79,.7);
 }
 .avatar > * { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid var(--ink) }
 .avatar .initials {
@@ -83,35 +83,35 @@ svg.i { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-widt
 }
 .card {
   width: 100%; position: relative; border-radius: 28px; padding: 84px 24px 26px;
-  background: linear-gradient(160deg, var(--panel-2), var(--panel) 55%, #09130f);
+  background: linear-gradient(160deg, var(--panel-2), var(--panel) 55%, #0a291f);
   border: 1px solid var(--line);
-  box-shadow: 0 30px 80px -30px rgba(150,110,45,.55), inset 0 1px 0 rgba(255,255,255,.06);
+  box-shadow: 0 30px 80px -30px rgba(31,107,79,.55), inset 0 1px 0 rgba(255,255,255,.06);
   overflow: hidden; text-align: center;
   transition: transform .25s ease-out;
 }
 .card::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(260px circle at var(--mx, 70%) var(--my, 0%), rgba(222,196,140,.16), transparent 60%);
+  background: radial-gradient(260px circle at var(--mx, 70%) var(--my, 0%), rgba(200,215,200,.16), transparent 60%);
 }
 .card .corner { position: absolute; top: 18px; right: 18px }
 .card .status { margin-bottom: 14px }
 h1 { font: 600 clamp(26px, 7.4vw, 32px)/1.1 var(--display); letter-spacing: -.02em; margin: 0; text-wrap: balance }
 h1 .dot-end { color: var(--electric) }
 .role { margin: 10px 0 0; font: 500 14px var(--body); color: var(--electric); letter-spacing: .02em }
-.bio { display: grid; gap: 14px; margin: 22px auto 0; max-width: 36ch; color: #c9c4b6; font-size: 14.5px }
+.bio { display: grid; gap: 14px; margin: 22px auto 0; max-width: 36ch; color: #c6d1c8; font-size: 14.5px }
 .bio p { margin: 0 }
 .signature { margin: 20px 0 0; font: 600 14px var(--body); color: var(--text) }
 .save {
   margin-top: 22px; display: inline-flex; align-items: center; gap: 10px;
   padding: 12px 22px; border-radius: 99px; cursor: pointer;
-  background: rgba(201,164,92,.08); border: 1px solid rgba(222,196,140,.35); color: var(--ice);
+  background: rgba(141,170,145,.08); border: 1px solid rgba(200,215,200,.35); color: var(--ice);
   font: 600 13.5px var(--body); transition: background .2s;
 }
-.save:hover { background: rgba(201,164,92,.18) }
+.save:hover { background: rgba(141,170,145,.18) }
 .chip {
   display: inline-flex; align-items: center; gap: 8px;
   font: 500 10px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--ice);
-  padding: 6px 11px; border-radius: 99px; border: 1px solid var(--line); background: rgba(201,164,92,.08);
+  padding: 6px 11px; border-radius: 99px; border: 1px solid var(--line); background: rgba(141,170,145,.08);
 }
 .dot { width: 7px; height: 7px; border-radius: 50%; background: #3ee08f; box-shadow: 0 0 0 4px rgba(62,224,143,.15) }
 
@@ -125,7 +125,7 @@ h1 .dot-end { color: var(--electric) }
   font: 500 11.5px var(--body); color: var(--muted); background: none; border: 0; cursor: pointer;
   transition: background .2s, color .2s; text-align: center;
 }
-.quick a:hover, .quick button:hover { background: rgba(201,164,92,.1); color: var(--text) }
+.quick a:hover, .quick button:hover { background: rgba(141,170,145,.1); color: var(--text) }
 .quick svg.i { width: 21px; height: 21px; color: var(--ice) }
 
 /* ---------- link buttons ---------- */
@@ -136,15 +136,15 @@ h1 .dot-end { color: var(--electric) }
   background: var(--panel); border: 1px solid var(--line);
   transition: transform .2s, border-color .2s, background .2s;
 }
-.link:hover { transform: translateY(-2px); border-color: rgba(201,164,92,.45); background: var(--panel-2) }
-.link .ic { width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center; background: rgba(201,164,92,.1); color: var(--ice) }
+.link:hover { transform: translateY(-2px); border-color: rgba(141,170,145,.45); background: var(--panel-2) }
+.link .ic { width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center; background: rgba(141,170,145,.1); color: var(--ice) }
 .link strong { display: block; font: 600 14.5px var(--body) }
 .link small { display: block; font-size: 12.5px; color: var(--muted); line-height: 1.35 }
 .link .arrow { color: var(--muted); transition: transform .2s, color .2s }
 .link:hover .arrow { transform: translateX(3px); color: var(--electric) }
-.link.primary { background: linear-gradient(120deg, #d9b878 0%, #f6e9c9 40%, #e2c78c 60%, #b8904a 100%); background-size: 200% 100%; border-color: transparent; color: var(--navy); animation: shine 9s linear infinite }
-.link.primary .ic { background: rgba(28,22,10,.16); color: var(--navy) }
-.link.primary small, .link.primary .arrow { color: rgba(28,22,10,.72) }
+.link.primary { background: linear-gradient(120deg, #b9cdbb 0%, #ffffff 40%, #dfe8df 60%, #8daa91 100%); background-size: 200% 100%; border-color: transparent; color: var(--navy); animation: shine 9s linear infinite }
+.link.primary .ic { background: rgba(10,40,30,.16); color: var(--navy) }
+.link.primary small, .link.primary .arrow { color: rgba(10,40,30,.72) }
 @keyframes shine { to { background-position: -200% 0 } }
 
 /* ---------- sections ---------- */
@@ -170,10 +170,10 @@ h2 span { color: var(--muted) }
 
 .cta {
   border-radius: 28px; padding: 30px 24px; position: relative; overflow: hidden;
-  background: linear-gradient(160deg, #12302a, #0a1814 70%); border: 1px solid rgba(201,164,92,.25);
+  background: linear-gradient(160deg, #1f6b4f, #0b2e23 70%); border: 1px solid rgba(141,170,145,.25);
   display: grid; gap: 18px;
 }
-.cta::before { content: ""; position: absolute; width: 260px; height: 260px; right: -90px; top: -110px; border-radius: 50%; background: radial-gradient(circle, rgba(222,196,140,.35), transparent 65%) }
+.cta::before { content: ""; position: absolute; width: 260px; height: 260px; right: -90px; top: -110px; border-radius: 50%; background: radial-gradient(circle, rgba(200,215,200,.35), transparent 65%) }
 .cta > * { position: relative }
 .cta h2 { font-size: clamp(25px, 7vw, 31px) }
 .cta h2 em { font-style: normal; color: var(--ice) }
@@ -200,7 +200,7 @@ footer .tagline { font: 500 10.5px var(--mono); letter-spacing: .3em; text-trans
 /* ---------- abertura ---------- */
 .intro {
   position: fixed; inset: 0; z-index: 1000;
-  background: radial-gradient(120% 90% at 50% 40%, #0b1a16 0%, #040806 70%);
+  background: radial-gradient(120% 90% at 50% 40%, #0d3326 0%, #061a13 70%);
   display: grid; place-items: center; align-content: center; gap: 8px;
   transition: opacity .6s ease;
 }
@@ -225,24 +225,25 @@ footer .tagline { font: 500 10.5px var(--mono); letter-spacing: .3em; text-trans
 }
 
 /* ---------- Saulo: marca, empreendimentos e crédito ---------- */
-.sr-brand .mark { height: 38px; width: auto }
-.sr-brand > span { display: grid; line-height: 1.1; font: 600 15px var(--display); color: var(--text) }
+.sr-brand .mark { height: 30px; width: auto }
+.sr-brand > span { display: grid; line-height: 1.1; font: 600 17px var(--display); letter-spacing: .06em; color: var(--text) }
 .sr-brand small { font: 500 10px var(--mono); letter-spacing: .22em; text-transform: uppercase; color: var(--electric) }
-footer .foot-mark { height: 64px; width: auto }
-h1, h2 { letter-spacing: -.01em }
+footer .foot-mark { height: 56px; width: auto }
+h1 { font-size: clamp(30px, 8.6vw, 38px); letter-spacing: .01em }
+h2 { font-size: clamp(25px, 7vw, 30px); letter-spacing: 0 }
 .proj-list { display: grid; gap: 10px }
 .proj-card {
   display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 14px; align-items: center;
   padding: 10px 16px 10px 10px; border-radius: 18px; background: var(--panel); border: 1px solid var(--line);
   transition: transform .2s, border-color .2s;
 }
-.proj-card:hover { transform: translateY(-2px); border-color: rgba(201,164,92,.45) }
+.proj-card:hover { transform: translateY(-2px); border-color: rgba(141,170,145,.45) }
 .proj-card img, .proj-ic { width: 64px; height: 64px; border-radius: 12px; object-fit: cover }
-.proj-ic { display: grid; place-items: center; background: rgba(201,164,92,.1); color: var(--ice) }
+.proj-ic { display: grid; place-items: center; background: rgba(141,170,145,.1); color: var(--ice) }
 .proj-tx strong { display: block; font: 600 15px var(--body) }
 .proj-tx small { color: var(--muted); font-size: 12.5px }
 .credit { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); padding-top: 4px }
 .credit img { height: 16px; width: auto }
 .credit:hover { color: var(--ice) }
-.sk-intro { background: radial-gradient(110% 80% at 50% 40%, #12302a 0%, #040806 72%) }
+.sk-intro { background: radial-gradient(110% 80% at 50% 40%, #1f6b4f 0%, #061a13 72%) }
 .sk-stage { width: min(80vw, 420px) }

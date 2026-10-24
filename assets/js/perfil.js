@@ -16,7 +16,7 @@ window.HM_PROFILE = {
   phone: "+55 62 99864-9642",
   email: "",
   instagram: "saulorocha.corretor",
-  creci: "",                              // TODO: número do CRECI (aparece no cartão quando preenchido)
+  creci: "7091",
   company: "Saulo Rocha Imóveis"
 };
 
@@ -31,7 +31,8 @@ window.HM_INTENTS = [
 // Para cada um: nome, tipo/bairro, link (Instagram, site ou material) e imagem opcional em /assets/img/.
 // Lista vazia = a seção não aparece.
 window.HM_PROJECTS = [
-  // { name: "Nome do empreendimento", place: "Apartamentos · Setor Bueno, Goiânia", link: "https://…", image: "/assets/img/empreendimento-1.jpg", msg: "Olá, Saulo! Quero saber mais sobre o Nome do empreendimento." }
+  { name: "Urban Garden Residence", place: "Peça o caderno de plantas pelo WhatsApp", link: "", image: "", msg: "Olá, Saulo! Quero saber mais sobre o Urban Garden Residence e receber o caderno de plantas." }
+  // , { name: "Nome do empreendimento", place: "Apartamentos · Setor Bueno, Goiânia", link: "https://…", image: "/assets/img/empreendimento-1.jpg", msg: "Olá, Saulo! Quero saber mais sobre o Nome do empreendimento." }
 ];
 
 // Crédito de quem fez o cartão
