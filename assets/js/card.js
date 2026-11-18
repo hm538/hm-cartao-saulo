@@ -135,7 +135,7 @@
       ${mark("mark foot-mark")}
       <span class="tagline">${esc(p.signature)}</span>
       <div class="foot-row"><span>© ${new Date().getFullYear()} Saulo Rocha</span><button type="button" data-replay>Rever abertura</button></div>
-      <a class="credit" href="${esc(company.site)}" target="_blank" rel="noopener">Cartão feito por <img src="${esc(company.logo)}" alt="" width="1000" height="586"> HM Digital</a>
+      <a class="credit" href="${esc(company.site)}" target="_blank" rel="noopener">Feito por <img src="${esc(company.logo)}" alt="" width="1000" height="586"> HM Digital</a>
     </footer>`;
 
   // ---------- render ----------

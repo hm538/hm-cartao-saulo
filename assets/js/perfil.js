@@ -50,4 +50,4 @@ window.HM_PROJECTS = [
 ];
 
 // Crédito de quem fez o cartão
-window.HM_COMPANY = { name: "HM Digital", logo: "/assets/img/logo-hm.png", site: "https://links.hmdigitalgo.com" };
+window.HM_COMPANY = { name: "HM Digital", logo: "/assets/img/logo-hm.png", site: "https://www.hmdigitalgo.com" };
